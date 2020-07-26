@@ -1,30 +1,36 @@
+
 const fs = require('fs');
 
 // Grab the string from the JSON file.
-const data = fs.readFileSync('../students.json', 'utf8')
+// const data = fs.readFileSync('../students.json', 'utf8')
 
-const obj = JSON.parse(data)
-console.log(obj.students[0])
+// const obj = JSON.parse(data);
 
 
-const getStudentByIndex = function(obj){
-  for (let i= 0; i < obj.length; i++){
-  const newObj = obj.students;
-  return newObj
+const getStudentByIndex = function(index){
+  const data = fs.readFileSync('../students.json', 'utf8')
+  const obj = JSON.parse(data);
+
+ return obj.students[index]
   
-  }
 }
-// console.log(newObj)
 
-const getStudentByName = function(obj){
-  for (let i= 0; i < obj.length; i++){
-  if (obj.students[i].name === 'Mesuara' || obj.students[i].name === 'JD' || obj.students[i].name === 'Colin'){
-    return obj.students[i].name;
-  } else {
-    return -1;
-}
+
+const getStudentByName = function(string){
+  const data = fs.readFileSync('../students.json', 'utf8')
+  const obj = JSON.parse(data);
+//  console.log(obj);
+
+  for (let i= 0; i < string.length; i++){
+    if (string === 'Mesuara' || string === 'JD' || string === 'Colin'){
+      return obj.students[string];
+    } else {
+      return -1;
+    }
   }
 }
+// console.log(obj.students[0])
+
 
 // fs.writeFileSync('../students.json', backToJSON)
 
