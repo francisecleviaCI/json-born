@@ -1,10 +1,4 @@
-
 const fs = require('fs');
-
-// Grab the string from the JSON file.
-// const data = fs.readFileSync('../students.json', 'utf8')
-
-// const obj = JSON.parse(data);
 
 
 const getStudentByIndex = function(index){
@@ -19,25 +13,37 @@ const getStudentByIndex = function(index){
 const getStudentByName = function(string){
   const data = fs.readFileSync('../students.json', 'utf8')
   const obj = JSON.parse(data);
-//  console.log(obj);
+
+// console.log(obj.students[0])
 
   for (let i= 0; i < string.length; i++){
     if (string === 'Mesuara' || string === 'JD' || string === 'Colin'){
-      return obj.students[string];
+      return obj.students[i];
     } else {
       return -1;
     }
   }
 }
-// console.log(obj.students[0])
 
 
-// fs.writeFileSync('../students.json', backToJSON)
 
-const graduateStudent = function(){
+const graduateStudent = function(string){
+  const data = fs.readFileSync('../students.json', 'utf8')
+  const obj = JSON.parse(data);
+  const backToJSON = JSON.stringify(obj)
+  fs.writeFileSync('../students.json', backToJSON)
+  
+  
+  for (let i= 0; i < backToJSON.length; i++){
+    const newJSON = backToJSON[i];
+    if (newJSON === 'Mesuara' || newJSON === 'JD' || newJSON === 'Colin'){
+      return newJSON[0][1];
+    } 
+    // console.log(newJSON);
 
-} 
 
+    }
+  }
 
 
 
